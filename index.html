@@ -51,6 +51,7 @@ function onReceivedActivityMessageViaJavascriptInterface(json){
                 var fullAddr = data.address; // 최종 주소 변수
                 var extraAddr = ''; // 조합형 주소 변수
                 var locate='';
+		    
                 geocoder.addressSearch(fulladdr, function(result, status){
 
                     // 정상적으로 검색이 완료되었으면
