@@ -15,6 +15,26 @@
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=89089cfb1c9b0888b202245370d61013&libraries=services"></script>
 <script>
+    
+   window.addEventListener("message", onReceivedPostMessage, false);
+
+    function onReceivedPostMessage(event){
+        //..ex deconstruct event into action & params
+        var action = event.data.action;
+        var params = event.data.params;
+
+        console.log("onReceivedPostMessage "+event);
+
+    }
+
+    function onReceivedActivityMessageViaJavascriptInterface(json){
+         //..ex deconstruct data into action & params
+         var data = JSON.parse(json);
+         var action = data.action;
+         var params = data.params;
+           console.log("onReceivedActivityMessageViaJavascriptInterface "+event);
+    }
+    
     var mapContainer = document.getElementById('map'), // 지도를 표시할 div
         mapOption = {
             center: new daum.maps.LatLng(37.537187, 127.005476), // 지도의 중심좌표
@@ -36,7 +56,7 @@
         new daum.Postcode({
             oncomplete: function(data) {
                 var addr = data.address; // 최종 주소 변수
-
+                var fullAddr = '';
                 // 주소 정보를 해당 필드에 넣는다.
                 document.getElementById("sample5_address").value = addr;
                 // 주소로 상세 정보를 검색
@@ -49,14 +69,18 @@
                         // 해당 주소에 대한 좌표를 받아서
                         var coords = new daum.maps.LatLng(result.y, result.x);
                         // 지도를 보여준다.
+                        fullAddr = result.x;
+                        fullAddr += result.y;
                         mapContainer.style.display = "block";
                         map.relayout();
                         // 지도 중심을 변경한다.
                         map.setCenter(coords);
                         // 마커를 결과값으로 받은 위치로 옮긴다.
                         marker.setPosition(coords)
+                  
                     }
                 });
+                window.Android.processDATA(fullRoadAddr);
             }
         }).open();
     }
