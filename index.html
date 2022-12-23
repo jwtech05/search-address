@@ -51,7 +51,7 @@ function onReceivedActivityMessageViaJavascriptInterface(json){
                 // 내려오는 변수가 값이 없는 경우엔 공백('')값을 가지므로, 이를 참고하여 분기 한다.
                 var fullAddr = data.address; // 최종 주소 변수
                 var extraAddr = ''; // 조합형 주소 변수
-		var lnt='';
+
 	        geocoder.addressSearch(data.address, function(results, status) {
                     // 정상적으로 검색이 완료됐으면
                     if (status === daum.maps.services.Status.OK) {
@@ -102,7 +102,7 @@ function onReceivedActivityMessageViaJavascriptInterface(json){
                     fullRoadAddr += extraRoadAddr;
                 }				
 
-		window.Android.processDATA(lnt); // data.zonecode + ", " + 
+		window.Android.processDATA(fullRoadAddr); // data.zonecode + ", " + 
             },
             width : '100%',
             height : '100%'
