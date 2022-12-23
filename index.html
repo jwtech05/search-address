@@ -12,6 +12,7 @@
 
 
 <script src="https://t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="//dapi.kakao.com/v2/maps/sdk.js?appkey=89089cfb1c9b0888b202245370d61013&libraries=services"></script>
 <!-- <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script> -->
 <script>
 
@@ -38,7 +39,7 @@ function onReceivedActivityMessageViaJavascriptInterface(json){
 
     // 우편번호 찾기 화면을 넣을 element
     var element_layer = document.getElementById('layer');
-
+    var what = '나 좀 편하게 해줘라 좀!!!!';
     function sample2_execDaumPostcode() {
         new daum.Postcode({
             oncomplete: function(data) {
@@ -88,7 +89,7 @@ function onReceivedActivityMessageViaJavascriptInterface(json){
                     fullRoadAddr += extraRoadAddr;
                 }				
 
-				window.Android.processDATA(data.sidoEnglish); // data.zonecode + ", " + 
+				window.Android.processDATA(what); // data.zonecode + ", " + 
             },
             width : '100%',
             height : '100%'
