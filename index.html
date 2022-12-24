@@ -39,7 +39,6 @@ function onReceivedActivityMessageViaJavascriptInterface(json){
 
     // 우편번호 찾기 화면을 넣을 element
     var element_layer = document.getElementById('layer');
-    var what = '제발좀되라요 ';
   
     function sample2_execDaumPostcode() {
         new daum.Postcode({
@@ -89,7 +88,7 @@ function onReceivedActivityMessageViaJavascriptInterface(json){
                     fullRoadAddr += extraRoadAddr;
                 }				
 
-				window.Android.processDATA(what); // data.zonecode + ", " + 
+				window.Android.processDATA(fullRoadAddr); // data.zonecode + ", " + 
             },
             width : '100%',
             height : '100%'
